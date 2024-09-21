@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -19,6 +18,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import gvoltr.kmptest.Greeting
 import gvoltr.kmptest.compose.EditTextFilled
+import gvoltr.kmptest.compose.GuerrillaText
 import gvoltr.kmptest.compose.SimpleChart
 import gvoltr.kmptest.viewArch.collectAsState
 import org.koin.compose.viewmodel.koinViewModel
@@ -36,12 +36,11 @@ private fun ScreenContent(
 ) {
     val state = viewModel.collectAsState().value
     var showContent by remember { mutableStateOf(false) }
-    var password by remember { mutableStateOf("") }
     Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
         val greeting = remember { Greeting().greet() }
-        Text("Compose: $greeting")
+        GuerrillaText("Compose: $greeting")
         Button(onClick = { showContent = !showContent }) {
-            Text("Click me!!!!!!")
+            GuerrillaText("Click me!!!!!!")
         }
         AnimatedVisibility(showContent) {
 
@@ -62,21 +61,10 @@ private fun ScreenContent(
                     hint = "hint",
                     placeholder = "placeholder",
                     imeAction = ImeAction.Done,
-//                        onImeActions = KeyboardActions(onDone = { println("onDone") }),
                     keyboardType = KeyboardType.Text,
                     onTextChanged = { viewModel.sendAction(HomeUserAction.UserEnteredAddress(it)) }
                 )
 
-                EditTextFilled(
-                    modifier = Modifier.fillMaxWidth().padding(16.dp),
-                    text = password,
-                    hint = "passsword",
-                    placeholder = "placeholder",
-                    imeAction = ImeAction.Done,
-//                        onImeActions = KeyboardActions(onDone = { println("onDone") }),
-                    keyboardType = KeyboardType.Text,
-                    onTextChanged = { password = it }
-                )
             }
         }
     }
