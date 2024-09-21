@@ -5,6 +5,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -17,10 +20,17 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import gvoltr.kmptest.Greeting
+import gvoltr.kmptest.compose.DefaultImage
+import gvoltr.kmptest.compose.DefaultTintIcon
 import gvoltr.kmptest.compose.EditTextFilled
 import gvoltr.kmptest.compose.GuerrillaText
 import gvoltr.kmptest.compose.SimpleChart
+import gvoltr.kmptest.compose.theme.AppColor
 import gvoltr.kmptest.viewArch.collectAsState
+import kmptest2.composeapp.generated.resources.Res
+import kmptest2.composeapp.generated.resources.compose_multiplatform
+import kmptest2.composeapp.generated.resources.ic_error
+import org.jetbrains.compose.resources.painterResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -36,9 +46,21 @@ private fun ScreenContent(
 ) {
     val state = viewModel.collectAsState().value
     var showContent by remember { mutableStateOf(false) }
-    Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(
+        Modifier
+            .fillMaxWidth()
+            .verticalScroll(
+                rememberScrollState()
+            ),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         val greeting = remember { Greeting().greet() }
         GuerrillaText("Compose: $greeting")
+        DefaultTintIcon(
+            modifier = Modifier.size(46.dp),
+            painter = painterResource(Res.drawable.ic_error),
+            tint = AppColor.Primary
+        )
         Button(onClick = { showContent = !showContent }) {
             GuerrillaText("Click me!!!!!!")
         }
@@ -48,7 +70,7 @@ private fun ScreenContent(
                 Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-//                    Image(painterResource(Res.drawable.compose_multiplatform), null)
+                DefaultImage(painter = painterResource(Res.drawable.compose_multiplatform))
 
                 SimpleChart(
                     modifier = Modifier.fillMaxWidth()
