@@ -1,19 +1,25 @@
 package gvoltr.kmptest.data.api.model
 
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class WalletNftProfileResponse(
-//    @SerializedName("ETH")
+    @SerialName("ETH")
     val eth: Chain?,
-//    @SerializedName("MATIC")
+    @SerialName("MATIC")
     val matic: Chain?
 ) {
 
     fun getChain() = eth ?: matic
 
+    @Serializable
     data class Chain(
         val nfts: List<Nft>,
         val cursor: String?
     )
 
+    @Serializable
     data class Nft(
         val mint: String,
         val link: String,
@@ -23,7 +29,7 @@ data class WalletNftProfileResponse(
         val collectionImageUrl: String?,
         val name: String,
         val description: String,
-//        @SerializedName("image_url")
+        @SerialName("image_url")
         val imageUrl: String,
         val tags: List<String>?,
         val createdDate: String?,
@@ -35,22 +41,25 @@ data class WalletNftProfileResponse(
         val supply: Int
     )
 
+    @Serializable
     data class SaleDetails(
         val primary: Primary?,
         val secondary: List<Secondary>?
     ) {
+        @Serializable
         data class Primary(
             val date: String?,
             val txHash: String?,
             val marketPlace: String?,
         )
-
+        @Serializable
         data class Secondary(
             val type: String?,
             val date: String,
-            val cost: Double,
+            val cost: Double?,
             val payment: Payment
         ) {
+            @Serializable
             data class Payment(
                 val symbol: String?,
                 val valueUsd: Double,
@@ -59,11 +68,13 @@ data class WalletNftProfileResponse(
         }
     }
 
+    @Serializable
     data class FloorPrice(
         val currency: String,
         val value: Double
     )
 
+    @Serializable
     data class Rarity(
         val rank: Int,
         val score: Double

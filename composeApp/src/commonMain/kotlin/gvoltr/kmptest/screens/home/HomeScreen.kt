@@ -30,6 +30,7 @@ import gvoltr.kmptest.viewArch.collectAsState
 import kmptest2.composeapp.generated.resources.Res
 import kmptest2.composeapp.generated.resources.compose_multiplatform
 import kmptest2.composeapp.generated.resources.ic_error
+import kmptest2.composeapp.generated.resources.ic_page
 import org.jetbrains.compose.resources.painterResource
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -61,6 +62,14 @@ private fun ScreenContent(
             painter = painterResource(Res.drawable.ic_error),
             tint = AppColor.Primary
         )
+        DefaultTintIcon(
+            modifier = Modifier.size(46.dp),
+            painter = painterResource(Res.drawable.ic_page),
+            tint = AppColor.Primary
+        )
+
+
+
         Button(onClick = { showContent = !showContent }) {
             GuerrillaText("Click me!!!!!!")
         }

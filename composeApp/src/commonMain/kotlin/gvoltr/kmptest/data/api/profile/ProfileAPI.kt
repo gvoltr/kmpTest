@@ -9,7 +9,7 @@ import gvoltr.kmptest.data.api.model.WalletNftProfileResponse
 
 interface ProfileAPI {
 
-    @GET("/profile/user/{wallet}/nfts")
+    @GET("profile/user/{wallet}/nfts")
     suspend fun getProfileNfts(
         @Header("x-api-key") apiKey: String,
         @Path("wallet") wallet: String,
