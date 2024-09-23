@@ -33,11 +33,17 @@ kotlin {
     }
     
     sourceSets {
+        val ktorVersion = "2.3.12"
         
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+            implementation(libs.ktor.client.okhttp)
         }
+        iosMain.dependencies {
+            implementation(libs.ktor.client.darwin)
+        }
+
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -63,10 +69,8 @@ kotlin {
             val ktorfitVersion = "2.1.0"
             implementation("de.jensklingenberg.ktorfit:ktorfit-lib:$ktorfitVersion")
             implementation("de.jensklingenberg.ktorfit:ktorfit-converters-response:$ktorfitVersion")
-            val ktorVersion = "2.3.12"
-            implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
-            implementation("io.ktor:ktor-client-logging:$ktorVersion")
-            implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+
+            implementation(libs.bundles.ktor)
         }
     }
 }

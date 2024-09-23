@@ -2,7 +2,7 @@ package gvoltr.kmptest.data.api
 
 import de.jensklingenberg.ktorfit.Ktorfit
 import de.jensklingenberg.ktorfit.converter.ResponseConverterFactory
-import gvoltr.kmptest.data.api.profile.createProfileAPI
+import gvoltr.kmptest.data.api.profile.ProfileAPI
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.logging.LogLevel
@@ -16,8 +16,9 @@ import org.koin.dsl.module
 
 @OptIn(ExperimentalSerializationApi::class)
 val apiModule = module {
-    single<Ktorfit> {
-        val myClient = HttpClient() {
+
+    single<HttpClient> {
+        HttpClient() {
             install(Logging) {
                 logger = Logger.SIMPLE
                 level = LogLevel.ALL
@@ -26,10 +27,15 @@ val apiModule = module {
                 json(Json { isLenient = true; ignoreUnknownKeys = true; explicitNulls = false })
             }
         }
-        Ktorfit.Builder().httpClient(myClient)
+    }
+
+    single<Ktorfit> {
+        Ktorfit.Builder().httpClient(get<HttpClient>())
             .converterFactories(ResponseConverterFactory())
             .baseUrl("https://api.unstoppabledomains.com/")
             .build()
     }
-    single { get<Ktorfit>().createProfileAPI() }
+    single {
+        get<Ktorfit>().create<ProfileAPI>()
+    }
 }

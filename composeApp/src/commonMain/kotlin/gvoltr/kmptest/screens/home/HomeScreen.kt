@@ -68,8 +68,6 @@ private fun ScreenContent(
             tint = AppColor.Primary
         )
 
-
-
         Button(onClick = { showContent = !showContent }) {
             GuerrillaText("Click me!!!!!!")
         }
