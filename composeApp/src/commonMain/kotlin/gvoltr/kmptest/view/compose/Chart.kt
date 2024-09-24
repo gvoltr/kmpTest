@@ -1,4 +1,4 @@
-package gvoltr.kmptest.compose
+package gvoltr.kmptest.view.compose
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.runtime.Composable

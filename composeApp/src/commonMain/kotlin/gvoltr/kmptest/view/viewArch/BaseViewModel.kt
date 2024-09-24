@@ -1,4 +1,4 @@
-package gvoltr.kmptest.viewArch
+package gvoltr.kmptest.view.viewArch
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect

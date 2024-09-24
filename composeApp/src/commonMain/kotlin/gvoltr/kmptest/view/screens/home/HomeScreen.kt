@@ -1,4 +1,4 @@
-package gvoltr.kmptest.screens.home
+package gvoltr.kmptest.view.screens.home
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Column
@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -20,13 +21,13 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import gvoltr.kmptest.Greeting
-import gvoltr.kmptest.compose.DefaultImage
-import gvoltr.kmptest.compose.DefaultTintIcon
-import gvoltr.kmptest.compose.EditTextFilled
-import gvoltr.kmptest.compose.GuerrillaText
-import gvoltr.kmptest.compose.SimpleChart
-import gvoltr.kmptest.compose.theme.AppColor
-import gvoltr.kmptest.viewArch.collectAsState
+import gvoltr.kmptest.view.compose.DefaultImage
+import gvoltr.kmptest.view.compose.DefaultTintIcon
+import gvoltr.kmptest.view.compose.EditTextFilled
+import gvoltr.kmptest.view.compose.GuerrillaText
+import gvoltr.kmptest.view.compose.SimpleChart
+import gvoltr.kmptest.view.compose.theme.AppColor
+import gvoltr.kmptest.view.viewArch.collectAsState
 import kmptest2.composeapp.generated.resources.Res
 import kmptest2.composeapp.generated.resources.compose_multiplatform
 import kmptest2.composeapp.generated.resources.ic_error
@@ -84,6 +85,8 @@ private fun ScreenContent(
                         .height(120.dp)
                 )
 
+                CircularProgressIndicator(modifier = Modifier.size(48.dp))
+
                 EditTextFilled(
                     modifier = Modifier.fillMaxWidth().padding(16.dp),
                     text = state.walletAddress,
@@ -93,7 +96,6 @@ private fun ScreenContent(
                     keyboardType = KeyboardType.Text,
                     onTextChanged = { viewModel.sendAction(HomeUserAction.UserEnteredAddress(it)) }
                 )
-
             }
         }
     }

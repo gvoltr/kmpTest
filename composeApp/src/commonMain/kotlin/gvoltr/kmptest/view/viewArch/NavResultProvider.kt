@@ -1,4 +1,4 @@
-package gvoltr.kmptest.viewArch
+package gvoltr.kmptest.view.viewArch
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow

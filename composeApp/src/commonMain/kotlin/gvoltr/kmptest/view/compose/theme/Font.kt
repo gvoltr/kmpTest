@@ -1,4 +1,4 @@
-package gvoltr.kmptest.compose.theme
+package gvoltr.kmptest.view.compose.theme
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.font.FontFamily

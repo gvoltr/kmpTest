@@ -1,4 +1,4 @@
-package gvoltr.kmptest.compose
+package gvoltr.kmptest.view.compose
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -9,7 +9,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.TextUnit
-import gvoltr.kmptest.compose.theme.GuerrillaFont
+import gvoltr.kmptest.view.compose.theme.GuerrillaFont
 
 @Composable
 fun GuerrillaText(

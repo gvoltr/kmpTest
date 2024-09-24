@@ -1,7 +1,7 @@
-package gvoltr.kmptest.screens.home
+package gvoltr.kmptest.view.screens.home
 
 import gvoltr.kmptest.data.repository.ProfileRepository
-import gvoltr.kmptest.viewArch.BaseViewModel
+import gvoltr.kmptest.view.viewArch.BaseViewModel
 
 class HomeViewModel(
     private val profileRepository: ProfileRepository

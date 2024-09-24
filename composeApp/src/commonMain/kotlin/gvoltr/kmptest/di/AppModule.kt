@@ -1,6 +1,6 @@
 package gvoltr.kmptest.di
 
-import gvoltr.kmptest.screens.home.HomeViewModel
+import gvoltr.kmptest.view.screens.home.HomeViewModel
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 

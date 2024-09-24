@@ -1,4 +1,4 @@
-package gvoltr.kmptest.compose
+package gvoltr.kmptest.view.compose
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -25,11 +25,11 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import gvoltr.kmptest.compose.theme.AppColor.BackgroundActive
-import gvoltr.kmptest.compose.theme.AppColor.Danger
-import gvoltr.kmptest.compose.theme.AppColor.EditTextBorderActive
-import gvoltr.kmptest.compose.theme.AppColor.EditTextBorderInactive
-import gvoltr.kmptest.compose.theme.AppColor.Secondary
+import gvoltr.kmptest.view.compose.theme.AppColor.BackgroundActive
+import gvoltr.kmptest.view.compose.theme.AppColor.Danger
+import gvoltr.kmptest.view.compose.theme.AppColor.EditTextBorderActive
+import gvoltr.kmptest.view.compose.theme.AppColor.EditTextBorderInactive
+import gvoltr.kmptest.view.compose.theme.AppColor.Secondary
 
 @Composable
 fun EditTextFilled(

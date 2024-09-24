@@ -1,4 +1,4 @@
-package gvoltr.kmptest.screens.home
+package gvoltr.kmptest.view.screens.home
 
 data class HomeState(
     val walletAddress: String = "",
