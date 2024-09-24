@@ -1,22 +1,27 @@
 package gvoltr.kmptest.view.screens.home
 
 import gvoltr.kmptest.data.repository.ProfileRepository
+import gvoltr.kmptest.interop.WalletManager
 import gvoltr.kmptest.view.viewArch.BaseViewModel
 
 class HomeViewModel(
-    private val profileRepository: ProfileRepository
+    private val profileRepository: ProfileRepository,
+    private val walletManager: WalletManager
 ) : BaseViewModel<HomeState, HomeSideEffect, HomeUserAction>(
     HomeState()
 ) {
 
     override fun onCreate() {
         super.onCreate()
-        intent {
-            val nfts = profileRepository.getProfileNfts(
-                wallet = "0x42740d63644db0a8dd8d369d2cb1316d97494de6"
-            )
-            println(nfts)
-        }
+//        intent {
+//            val nfts = profileRepository.getProfileNfts(
+//                wallet = "0x42740d63644db0a8dd8d369d2cb1316d97494de6"
+//            )
+//            println(nfts)
+//        }
+
+        val wallet = walletManager.generateWalletSecKey()
+        println("Wallet generated :: $wallet")
     }
 
     override fun processUserAction(action: HomeUserAction) {

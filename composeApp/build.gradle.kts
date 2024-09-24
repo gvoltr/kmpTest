@@ -39,6 +39,7 @@ kotlin {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
             implementation(libs.ktor.client.okhttp)
+            implementation(files("libs/wallet-core-3.2.5.aar"))
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
