@@ -1,6 +1,8 @@
 package gvoltr.kmptest.view.screens.home
 
+import DefaultSpacer
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -18,6 +20,7 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import gvoltr.kmptest.view.compose.EditTextFilled
 import gvoltr.kmptest.view.compose.GuerrillaText
 import gvoltr.kmptest.view.screens.composeShowcase.ComposeShowcaseScreen
+import gvoltr.kmptest.view.screens.generateWallet.GenerateWalletScreen
 import gvoltr.kmptest.view.viewArch.collectAsState
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -46,9 +49,16 @@ private fun ScreenContent(
             ),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Button(onClick = { navigator.push(ComposeShowcaseScreen()) }) {
-            GuerrillaText("View Examples")
+        Row {
+            Button(onClick = { navigator.push(ComposeShowcaseScreen()) }) {
+                GuerrillaText("View Examples")
+            }
+            DefaultSpacer(16.dp)
+            Button(onClick = { navigator.push(GenerateWalletScreen()) }) {
+                GuerrillaText("Generate Wallet")
+            }
         }
+
         EditTextFilled(
             modifier = Modifier.fillMaxWidth().padding(16.dp),
             text = state.walletAddress,

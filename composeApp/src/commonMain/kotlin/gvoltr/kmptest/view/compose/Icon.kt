@@ -11,9 +11,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.dp
-import kmptest2.composeapp.generated.resources.Res
-import kmptest2.composeapp.generated.resources.ic_back
-import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun DefaultTintIcon(
@@ -39,6 +36,6 @@ fun DefaultClickableIcon(
         .clip(CircleShape)
         .clickable(onClick = onClick)
         .padding(8.dp),
-    painter = painterResource(Res.drawable.ic_back),
-    tint = Color.Black
+    painter = painter,
+    tint = tint
 )

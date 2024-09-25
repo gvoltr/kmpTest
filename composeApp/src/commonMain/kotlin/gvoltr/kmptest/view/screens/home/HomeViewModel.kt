@@ -1,12 +1,10 @@
 package gvoltr.kmptest.view.screens.home
 
 import gvoltr.kmptest.data.repository.ProfileRepository
-import gvoltr.kmptest.interop.WalletManager
 import gvoltr.kmptest.view.viewArch.BaseViewModel
 
 class HomeViewModel(
     private val profileRepository: ProfileRepository,
-    private val walletManager: WalletManager
 ) : BaseViewModel<HomeState, HomeSideEffect, HomeUserAction>(
     HomeState()
 ) {
@@ -19,9 +17,6 @@ class HomeViewModel(
 //            )
 //            println(nfts)
 //        }
-
-        val wallet = walletManager.generateWalletSecKey()
-        println("Wallet generated :: $wallet")
     }
 
     override fun processUserAction(action: HomeUserAction) {
