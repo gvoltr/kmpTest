@@ -36,7 +36,6 @@ class GenerateWalletScreen : Screen {
         Column(
             Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp)
                 .verticalScroll(
                     rememberScrollState()
                 ),
@@ -66,6 +65,7 @@ class GenerateWalletScreen : Screen {
             )
             SelectionContainer {
                 GuerrillaText(
+                    modifier = Modifier.fillMaxWidth().padding(16.dp),
                     textAlign = TextAlign.Center,
                     text = state.seed,
                     color = Color.Black

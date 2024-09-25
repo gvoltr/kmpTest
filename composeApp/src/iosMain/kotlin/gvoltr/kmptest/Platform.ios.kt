@@ -1,5 +1,8 @@
 package gvoltr.kmptest
 
+import androidx.room.RoomDatabase
+import gvoltr.kmptest.data.db.AppDatabase
+import gvoltr.kmptest.db.createDatabaseBuilder
 import platform.UIKit.UIDevice
 
 class IOSPlatform: Platform {
@@ -7,3 +10,7 @@ class IOSPlatform: Platform {
 }
 
 actual fun getPlatform(): Platform = IOSPlatform()
+
+actual fun getDatabaseBuilder(): RoomDatabase.Builder<AppDatabase> {
+    return createDatabaseBuilder()
+}

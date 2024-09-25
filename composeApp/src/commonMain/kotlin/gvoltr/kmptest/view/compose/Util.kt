@@ -1,6 +1,7 @@
 package gvoltr.kmptest.view.compose
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SnapshotMutationPolicy
 import androidx.compose.runtime.mutableStateOf
@@ -24,3 +25,10 @@ fun OneTime(callback: suspend CoroutineScope.() -> Unit) = LaunchedEffect(Unit, 
 
 @Composable
 fun OneTime(key: Any?, callback: suspend CoroutineScope.() -> Unit) = LaunchedEffect(key, callback)
+
+@Composable
+fun OnInactive(callback: () -> Unit) {
+    DisposableEffect(key1 = "OnInactive") {
+        onDispose(callback)
+    }
+}

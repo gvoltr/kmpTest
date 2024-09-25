@@ -8,7 +8,8 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
     // Codegen
-    id("com.google.devtools.ksp") version "2.0.20-1.0.25"
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.room)
     id("de.jensklingenberg.ktorfit") version "2.1.0"
     alias(libs.plugins.kotlin.serialization)
 }
@@ -77,6 +78,10 @@ kotlin {
             implementation("cafe.adriel.voyager:voyager-bottom-sheet-navigator:$voyagerVersion")
             implementation("cafe.adriel.voyager:voyager-transitions:$voyagerVersion")
 
+            // DB
+            implementation(libs.room.runtime)
+            implementation(libs.sqlite.bundled)
+
             implementation(libs.bundles.ktor)
         }
     }
@@ -119,3 +124,18 @@ android {
     }
 }
 
+room {
+    schemaDirectory("$projectDir/schemas")
+}
+
+// For Room setup
+dependencies {
+    listOf(
+        "kspAndroid",
+        "kspIosSimulatorArm64",
+        "kspIosX64",
+        "kspIosArm64"
+    ).forEach {
+        add(it, libs.room.compiler)
+    }
+}

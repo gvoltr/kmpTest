@@ -6,6 +6,6 @@ import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
 val vmModule = module {
-    viewModel { HomeViewModel(get()) }
+    viewModel { HomeViewModel(get(), get()) }
     viewModel { GenerateWalletViewModel(get()) }
 }

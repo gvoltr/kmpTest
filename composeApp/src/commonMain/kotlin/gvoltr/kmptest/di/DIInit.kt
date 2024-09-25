@@ -2,6 +2,7 @@ package gvoltr.kmptest.di
 
 import gvoltr.kmptest.data.api.apiModule
 import gvoltr.kmptest.data.dataModule
+import gvoltr.kmptest.data.db.di.dbModule
 import gvoltr.kmptest.interop.WalletManager
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
@@ -13,7 +14,7 @@ class CustomKoinInitializer {
         walletManager: WalletManager
     ) {
         startKoin {
-            modules(apiModule, dataModule, vmModule, platformAbstractionModule(walletManager))
+            modules(dbModule, apiModule, dataModule, vmModule, platformAbstractionModule(walletManager))
         }
     }
 }
