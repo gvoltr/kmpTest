@@ -5,7 +5,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
-import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.flowWithLifecycle
@@ -138,7 +137,7 @@ public fun <STATE : Any, SIDE_EFFECT : Any> ContainerHost<STATE, SIDE_EFFECT>.co
     lifecycleState: Lifecycle.State = Lifecycle.State.STARTED
 ): State<STATE> {
     val stateFlow = container.stateFlow
-    val lifecycleOwner = LocalLifecycleOwner.current
+    val lifecycleOwner = androidx.lifecycle.compose.LocalLifecycleOwner.current
 
     val stateFlowLifecycleAware = remember(stateFlow, lifecycleOwner) {
         stateFlow.flowWithLifecycle(lifecycleOwner.lifecycle, lifecycleState)
@@ -155,7 +154,7 @@ public fun <STATE : Any, SIDE_EFFECT : Any> ContainerHost<STATE, SIDE_EFFECT>.co
     sideEffect: (suspend (sideEffect: SIDE_EFFECT) -> Unit)
 ) {
     val sideEffectFlow = container.sideEffectFlow
-    val lifecycleOwner = LocalLifecycleOwner.current
+    val lifecycleOwner = androidx.lifecycle.compose.LocalLifecycleOwner.current
 
     LaunchedEffect(sideEffectFlow, lifecycleOwner) {
         lifecycleOwner.lifecycle.repeatOnLifecycle(lifecycleState) {

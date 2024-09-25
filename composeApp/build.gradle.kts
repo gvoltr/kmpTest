@@ -71,6 +71,12 @@ kotlin {
             implementation("de.jensklingenberg.ktorfit:ktorfit-lib:$ktorfitVersion")
             implementation("de.jensklingenberg.ktorfit:ktorfit-converters-response:$ktorfitVersion")
 
+            // Nav
+            val voyagerVersion = "1.1.0-beta02"
+            implementation("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
+            implementation("cafe.adriel.voyager:voyager-bottom-sheet-navigator:$voyagerVersion")
+            implementation("cafe.adriel.voyager:voyager-transitions:$voyagerVersion")
+
             implementation(libs.bundles.ktor)
         }
     }
