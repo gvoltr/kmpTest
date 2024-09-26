@@ -66,8 +66,7 @@ private fun ScreenContent(
     val navigator = LocalNavigator.currentOrThrow
 
     Column(
-        Modifier
-            .fillMaxWidth(),
+        Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Row {
@@ -124,7 +123,9 @@ private fun ScreenContent(
             }
 
             else -> {
-                LazyColumn(modifier = Modifier.fillMaxWidth().weight(1f)) {
+                LazyColumn(
+                    modifier = Modifier.fillMaxWidth().weight(1f)
+                ) {
                     items(state.listItems, key = { it.key }) { item ->
                         ListItem(item)
                     }
