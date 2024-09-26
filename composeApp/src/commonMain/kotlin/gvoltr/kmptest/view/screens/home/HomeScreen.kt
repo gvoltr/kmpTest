@@ -10,13 +10,16 @@ import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyItemScope
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
@@ -38,6 +41,7 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import gvoltr.kmptest.data.model.profile.WalletNft
 import gvoltr.kmptest.view.compose.EditTextFilled
 import gvoltr.kmptest.view.compose.GuerrillaText
+import gvoltr.kmptest.view.compose.RemoteImage
 import gvoltr.kmptest.view.compose.theme.AppColor
 import gvoltr.kmptest.view.screens.composeShowcase.ComposeShowcaseScreen
 import gvoltr.kmptest.view.screens.generateWallet.GenerateWalletScreen
@@ -176,12 +180,12 @@ private fun LazyItemScope.CollectionHeader(
     verticalAlignment = Alignment.CenterVertically
 ) {
     header.image?.let {
-//        RemoteImage(
-//            modifier = Modifier
-//                .size(24.dp)
-//                .clip(CircleShape),
-//            url = it,
-//        )
+        RemoteImage(
+            modifier = Modifier
+                .size(24.dp)
+                .clip(CircleShape),
+            url = it,
+        )
         DefaultSpacer(size = 8.dp)
     }
     Text(
@@ -230,14 +234,13 @@ private fun RowScope.Nft(
         .background(AppColor.Primary)
         .clickable(onClick = onClick)
 ) {
-
+    RemoteImage(
+        modifier = Modifier.fillMaxSize(),
+        url = nft.imageUrl,
+    )
     GuerrillaText(
         modifier = Modifier.align(Alignment.BottomStart).padding(8.dp),
         color = Color.White,
         text = nft.name,
     )
-//    RemoteImage(
-//        modifier = Modifier.fillMaxSize(),
-//        url = nft.imageUrl,
-//    )
 }

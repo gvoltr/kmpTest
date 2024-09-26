@@ -68,6 +68,7 @@ kotlin {
             implementation("io.insert-koin:koin-compose-viewmodel-navigation:4.0.0")
 
             // REST
+            implementation(libs.bundles.ktor)
             val ktorfitVersion = "2.1.0"
             implementation("de.jensklingenberg.ktorfit:ktorfit-lib:$ktorfitVersion")
             implementation("de.jensklingenberg.ktorfit:ktorfit-converters-response:$ktorfitVersion")
@@ -82,7 +83,8 @@ kotlin {
             implementation(libs.room.runtime)
             implementation(libs.sqlite.bundled)
 
-            implementation(libs.bundles.ktor)
+            // Image loading
+            implementation("com.github.skydoves:landscapist-coil3:2.3.4")
         }
     }
 }
