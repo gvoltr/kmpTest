@@ -36,7 +36,6 @@ data class WalletNftProfileResponse(
         val acquiredDate: String?,
         val saleDetails: SaleDetails?,
         val floorPrice: FloorPrice?,
-        val rarity: Rarity?,
         val traits: Map<String, String>?,
         val supply: Int
     )
@@ -72,11 +71,5 @@ data class WalletNftProfileResponse(
     data class FloorPrice(
         val currency: String,
         val value: Double
-    )
-
-    @Serializable
-    data class Rarity(
-        val rank: Int,
-        val score: Double
     )
 }

@@ -10,13 +10,15 @@ import kotlinx.coroutines.flow.Flow
 interface NftDao {
 
     @Upsert
-    suspend fun upsert(nft: DBNft)
+    suspend fun upsert(nfts: List<DBNft>)
 
     @Query("SELECT DISTINCT ownerAddress FROM DBNft")
     fun observeSavedWallets(): Flow<List<String>>
 
-    // Query all NFTs for a specific wallet ignore case
     @Query("SELECT * FROM DBNft WHERE ownerAddress = :wallet COLLATE NOCASE")
     fun observeNftsForWallet(wallet: String): Flow<List<DBNft>>
+
+    @Query("SELECT * FROM DBNft WHERE ownerAddress = :wallet COLLATE NOCASE")
+    suspend fun getNftsForWallet(wallet: String): List<DBNft>
 
 }
