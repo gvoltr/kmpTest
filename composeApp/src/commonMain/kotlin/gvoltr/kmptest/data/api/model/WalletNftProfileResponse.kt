@@ -36,8 +36,7 @@ data class WalletNftProfileResponse(
         val acquiredDate: String?,
         val saleDetails: SaleDetails?,
         val floorPrice: FloorPrice?,
-        val traits: Map<String, String>?,
-        val supply: Int
+        val traits: Map<String, String>?
     )
 
     @Serializable
